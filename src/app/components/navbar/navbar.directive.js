@@ -5,7 +5,8 @@ export function NavbarDirective() {
     restrict: 'E',
     templateUrl: 'app/components/navbar/navbar.html',
     scope: {
-        creationDate: '='
+      creationDate: '=',
+      appName: '='
     },
     controller: NavbarController,
     controllerAs: 'vm',
@@ -16,7 +17,7 @@ export function NavbarDirective() {
 }
 
 class NavbarController {
-  constructor (moment) {
+  constructor(moment) {
     'ngInject';
 
     // "this.creation" is available by directive option "bindToController: true"

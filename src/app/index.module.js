@@ -3,7 +3,7 @@
 import { config } from './index.config';
 import { routerConfig } from './index.route';
 import { runBlock } from './index.run';
-import { MainController } from './main/main.controller';
+import { HomeController } from './pages/home/home.controller';
 import { GithubContributorService } from '../app/components/githubContributor/githubContributor.service';
 import { WebDevTecService } from '../app/components/webDevTec/webDevTec.service';
 import { NavbarDirective } from '../app/components/navbar/navbar.directive';
@@ -17,6 +17,6 @@ angular.module('angularfireDemo', ['ngCookies', 'ui.router', 'ngMaterial', 'toas
   .run(runBlock)
   .service('githubContributor', GithubContributorService)
   .service('webDevTec', WebDevTecService)
-  .controller('MainController', MainController)
+  .controller('HomeController', HomeController)
   .directive('acmeNavbar', NavbarDirective)
   .directive('acmeMalarkey', MalarkeyDirective);

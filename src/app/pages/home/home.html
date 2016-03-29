@@ -1,0 +1,45 @@
+<md-toolbar>
+  <header>
+    <acme-navbar creation-date="home.creationDate"></acme-navbar>
+  </header>
+</md-toolbar>
+<md-content>
+
+  <md-card>
+    <md-button ng-click="home.toggleList()">
+      <span ng-show="!home.listExpanded">Show list</span>
+      <span ng-show="home.listExpanded">Hide list</span>
+    </md-button>
+    <md-divider></md-divider>
+  </md-card>
+
+  <md-card ng-show="home.listExpanded">
+    <md-card-title>
+      <md-card-title-text>List</md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+
+      <md-list >
+        <md-list-item ng-repeat="listItem in home.list" class="secondary-button-padding">
+          <p>{{::listItem.name}}</p>
+          <md-button ng-click="home.removeItem($index)">
+            Remove
+          </md-button>
+        </md-list-item>
+      </md-list>
+
+    </md-card-content>
+  </md-card>
+
+  <md-card>
+    <form action="" ng-submit="home.addItem(home.newItemField)">
+      <md-input-container>
+        <label>Name</label>
+        <input ng-model="home.newItemField" autocomplete="off">
+      </md-input-container>
+      <md-button type="submit">Add</md-button>
+    </form>
+
+  </md-card>
+
+</md-content>
