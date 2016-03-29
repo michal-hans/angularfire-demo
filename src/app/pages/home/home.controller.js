@@ -1,30 +1,25 @@
 export class HomeController {
-  constructor () {
+  constructor ($firebaseObject, $firebaseArray) {
     'ngInject';
 
-    this.list = this.getListItems();
-    this.listExpanded = true;
+    var ref = new Firebase("https://torid-fire-1359.firebaseio.com/apps/todo");
+    // download the data into a local object
+    this.fireData = $firebaseArray(ref);
+
+    this.list = this.fireData;
+    this.debug = false;
   }
 
-  toggleList() {
-    this.listExpanded = !this.listExpanded;
-  }
-
-  getListItems() {
-    return [
-      {name: 'milk'},
-      {name: 'orange'},
-      {name: 'banana'},
-      {name: 'water'}
-    ]
+  toggleDebug() {
+    this.debug = !this.debug;
   }
 
   addItem(newItemName) {
-    this.list.push({name: newItemName});
+    this.list.$add({name: newItemName});
     this.newItemField = '';
   }
 
   removeItem(index) {
-    this.list.splice(index, 1);
+    this.list.$remove(index, 1);
   }
 }
