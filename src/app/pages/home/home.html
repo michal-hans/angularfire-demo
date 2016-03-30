@@ -1,45 +1,32 @@
-<md-toolbar>
-  <header>
-    <acme-navbar creation-date="home.creationDate" app-name="'Example Todo list'"></acme-navbar>
-  </header>
-</md-toolbar>
-<md-content>
-  <md-card>
-    <md-button ng-click="home.toggleDebug()">
-      <span ng-show="!home.debug">Show JSON</span>
-      <span ng-show="home.debug">Hide JSON</span>
-    </md-button>
-    <md-divider></md-divider>
-    <pre ng-show="home.debug">{{home.fireData | json}}</pre>
-  </md-card>
+<section class="container">
+  <div class="row">
+    <div class="col-sm-12">
 
-  <md-card>
-    <md-card-title>
-      <md-card-title-text>List</md-card-title-text>
-    </md-card-title>
-    <md-card-content>
+      <h1>Todo List</h1>
 
-      <md-list>
-        <md-list-item ng-repeat="listItem in home.list" class="secondary-button-padding">
-          <p>{{listItem.name}}</p>
-          <md-button ng-click="home.removeItem($index)">
-            Remove
-          </md-button>
-        </md-list-item>
-      </md-list>
+      <ul class="list-group">
+        <li class="list-group-item" ng-repeat="listItem in home.list">
+          {{listItem.name}}
+          <button class="btn btn-info btn-xs pull-right" ng-click="home.removeItem($index)">Remove</button>
+        </li>
+      </ul>
 
-    </md-card-content>
-  </md-card>
+      <hr>
 
-  <md-card>
-    <form action="" ng-submit="home.addItem(home.newItemField)">
-      <md-input-container>
-        <label>Name</label>
-        <input ng-model="home.newItemField" autocomplete="off" ng-required="true">
-      </md-input-container>
-      <md-button type="submit">Add</md-button>
-    </form>
+      <form ng-submit="home.addItem(home.newItemField)">
+        <div class="input-group">
+          <input ng-model="home.newItemField"
+                 type="text"
+                 class="form-control"
+                 autocomplete="off"
+                 ng-required="true"
+                 placeholder="Add new item here...">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">Add</button>
+          </span>
+        </div>
+      </form>
 
-  </md-card>
-
-</md-content>
+    </div>
+  </div>
+</section>

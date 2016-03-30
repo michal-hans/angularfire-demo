@@ -3,15 +3,10 @@ export class HomeController {
     'ngInject';
 
     var ref = new Firebase("https://torid-fire-1359.firebaseio.com/apps/todo");
+
     // download the data into a local object
     this.fireData = $firebaseArray(ref);
-
     this.list = this.fireData;
-    this.debug = false;
-  }
-
-  toggleDebug() {
-    this.debug = !this.debug;
   }
 
   addItem(newItemName) {

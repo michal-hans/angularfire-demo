@@ -4,7 +4,8 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
     .state('home', {
       url: '/',
       templateUrl: 'app/pages/home/home.html',
-      controller: 'HomeController as home'
+      controller: 'HomeController',
+      controllerAs: 'home'
     });
 
   $urlRouterProvider.otherwise('/');

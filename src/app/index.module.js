@@ -9,7 +9,15 @@ import { WebDevTecService } from '../app/components/webDevTec/webDevTec.service'
 import { NavbarDirective } from '../app/components/navbar/navbar.directive';
 import { MalarkeyDirective } from '../app/components/malarkey/malarkey.directive';
 
-angular.module('angularfireDemo', ['ngCookies', 'ui.router', 'ngMaterial', 'toastr', 'firebase'])
+angular.module('angularfireDemo', [
+    'ngCookies',
+    'ngSanitize',
+    'ngMessages',
+    'ui.router',
+    'ui.bootstrap',
+    'toastr',
+    'firebase'
+  ])
   .constant('malarkey', malarkey)
   .constant('moment', moment)
   .config(config)
