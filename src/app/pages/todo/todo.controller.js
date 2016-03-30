@@ -1,5 +1,5 @@
 export class TodoController {
-  constructor ($firebaseObject, $firebaseArray) {
+  constructor ($firebaseObject, $firebaseArray, Firebase) {
     'ngInject';
 
     var ref = new Firebase("https://torid-fire-1359.firebaseio.com/apps/todo");

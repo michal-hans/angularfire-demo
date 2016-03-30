@@ -1,7 +1,8 @@
 {
   "name": "angularfireDemo",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+  },
   "scripts": {
     "test": "gulp test"
   },
@@ -31,6 +32,7 @@
     "gulp-protractor": "~1.0.0",
     "gulp-sourcemaps": "~1.6.0",
     "gulp-sass": "~2.0.4",
+    "gulp-shell": "^0.5.2",
     "webpack-stream": "~2.1.1",
     "ng-annotate-loader": "0.0.10",
     "eslint-loader": "~1.1.0",

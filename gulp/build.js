@@ -95,3 +95,8 @@ gulp.task('clean', function () {
 });
 
 gulp.task('build', ['html', 'fonts', 'other']);
+
+gulp.task('firebase:deploy', ['build'], $.shell.task([
+  'echo Deploying to Firebase',
+  'firebase deploy'
+]))

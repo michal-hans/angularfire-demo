@@ -1,4 +1,4 @@
-/* global malarkey:false, moment:false */
+/* global malarkey:false, moment:false, Firebase:false */
 
 import { config } from './index.config';
 import { routerConfig } from './index.route';
@@ -20,6 +20,7 @@ angular.module('angularfireDemo', [
   ])
   .constant('malarkey', malarkey)
   .constant('moment', moment)
+  .constant('Firebase', Firebase)
   .config(config)
   .config(routerConfig)
   .run(runBlock)
