@@ -6,8 +6,18 @@
 
       <ul class="list-group">
         <li class="list-group-item" ng-repeat="listItem in home.list">
-          {{listItem.name}}
-          <button class="btn btn-info btn-xs pull-right" ng-click="home.removeItem($index)">Remove</button>
+          <span ng-show="!listItem.edit">{{listItem.name}}</span>
+          <span ng-show="listItem.edit">
+            <input type="text" ng-model="listItem.name">
+          </span>
+
+          <div class="pull-right">
+            <button class="btn btn-info btn-xs" ng-click="home.updateItem($index)" ng-show="listItem.edit">Save</button>
+            <button class="btn btn-default btn-xs" ng-click="home.restoreItem($index)" ng-show="listItem.edit">Cancel</button>
+            <button class="btn btn-info btn-xs" ng-click="home.editItem($index)" ng-show="!listItem.edit">Edit</button>
+            <button class="btn btn-danger btn-xs" ng-click="home.removeItem($index)" ng-disabled="listItem.edit">Remove</button>
+          </div>
+
         </li>
       </ul>
 
