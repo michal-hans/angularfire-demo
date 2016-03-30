@@ -1,4 +1,4 @@
-export class HomeController {
+export class TodoController {
   constructor ($firebaseObject, $firebaseArray) {
     'ngInject';
 

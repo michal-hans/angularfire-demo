@@ -2,26 +2,34 @@
   <div class="row">
     <div class="col-sm-12">
 
-      <h1>Todo List</h1>
+      <h1>AngularFire <small>Example</small></h1>
+
+      <hr>
 
       <ul class="Todo-list list-group">
-        <li class="Todo-listItem list-group-item" ng-repeat="listItem in home.list" ng-class="{'is-edited': listItem.edit}">
-          <span ng-show="!listItem.edit" ng-click="home.editItem($index)">{{listItem.name}}</span>
+        <li class="Todo-listItem list-group-item"
+            ng-repeat="listItem in todo.list"
+            ng-class="{'is-edited': listItem.edit}">
+
+          <span ng-show="!listItem.edit"
+                ng-click="todo.editItem($index)"
+                class="Todo-itemLabel">{{listItem.name}}</span>
           <span ng-if="listItem.edit">
             <form>
               <input type="text" ng-model="listItem.name" class="form-control">
               <hr>
               <button type="submit"
                       class="btn btn-info btn-sm"
-                      ng-click="home.updateItem($index)">Save</button>
-              <button class="btn btn-default btn-sm" ng-click="home.restoreItem($index)">Cancel</button>
+                      ng-click="todo.updateItem($index)">Save</button>
+              <button class="btn btn-default btn-sm"
+                      ng-click="todo.restoreItem($index)">Cancel</button>
             </form>
-
           </span>
 
           <div class="pull-right">
-
-            <button class="btn btn-danger btn-xs" ng-click="home.removeItem($index)" ng-show="!listItem.edit">Remove</button>
+            <button class="btn btn-danger btn-xs"
+                    ng-click="todo.removeItem($index)"
+                    ng-show="!listItem.edit">Remove</button>
           </div>
 
         </li>
@@ -29,9 +37,9 @@
 
       <hr>
 
-      <form ng-submit="home.addItem(home.newItemField)">
+      <form ng-submit="todo.addItem(todo.newItemField)">
         <div class="input-group">
-          <input ng-model="home.newItemField"
+          <input ng-model="todo.newItemField"
                  type="text"
                  class="form-control"
                  autocomplete="off"
