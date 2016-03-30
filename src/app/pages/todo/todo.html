@@ -1,10 +1,24 @@
 <section class="container">
   <div class="row">
     <div class="col-sm-12">
+      <a ui-sref="login" class="pull-right">Login</a>
 
       <h1>AngularFire <small>Example</small></h1>
 
       <hr>
+
+      <div class="text-center">
+        <p ng-if="todo.AuthService.authData.provider == 'facebook'">
+          <img ng-src="{{todo.AuthService.authData.facebook.profileImageURL}}" alt="" width="50px" style="border-radius: 50%;">
+          Hello {{todo.AuthService.authData.facebook.displayName}}!
+          User ID: {{todo.AuthService.authData.uid}}
+        </p>
+
+        <p ng-if="todo.AuthService.authData.provider == 'anonymous'">
+          Hello guest!
+          User ID: {{todo.AuthService.authData.uid}}
+        </p>
+      </div>
 
       <ul class="Todo-list list-group">
         <li class="Todo-listItem list-group-item"

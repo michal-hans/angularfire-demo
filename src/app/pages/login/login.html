@@ -1,0 +1,44 @@
+<section class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <a ui-sref="todo" class="pull-right">Todo List</a>
+
+      <h1>Login</h1>
+
+      <form>
+        <!--<div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" ng-model="login.username">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" ng-model="login.password">
+        </div>-->
+
+        <div ng-if="!login.AuthService.authData" class="text-center">
+          <button class="btn btn-primary btn-lg" type="submit" ng-click="login.login(login.username, login.password)">Login as Guest</button>
+          <button class="btn btn-primary btn-lg" ng-click="login.facebookLogin()">Login With Facebook</button>
+        </div>
+        <div ng-if="login.AuthService.authData">
+          <button class="btn btn-danger btn-lg" ng-click="login.logout()">Logout</button>
+        </div>
+      </form>
+
+      <div ng-if="login.AuthService.authData.provider == 'facebook'">
+        <img ng-src="{{login.AuthService.authData.facebook.profileImageURL}}" alt="">
+        Hello {{login.AuthService.authData.facebook.displayName}}!
+        User ID: {{login.AuthService.authData.uid}}
+      </div>
+
+      <div ng-if="login.AuthService.authData.provider == 'anonymous'">
+        Hello guest!
+        User ID: {{login.AuthService.authData.uid}}
+      </div>
+
+      <!--<pre>
+        {{login.authData | json}}
+      </pre>-->
+
+    </div>
+  </div>
+</section>
