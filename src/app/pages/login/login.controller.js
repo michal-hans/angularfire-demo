@@ -1,39 +1,24 @@
 export class LoginController {
-  constructor($log, Firebase, $firebaseAuth, AuthService) {
+  constructor(AuthService, $state) {
     'ngInject';
 
-    var authRef = new Firebase("https://torid-fire-1359.firebaseio.com/");
-    this.auth = $firebaseAuth(authRef);
     this.AuthService = AuthService;
-    this.log = $log;
+    this.$state = $state;
   }
 
-  login(username, password) {
+  loginAsGuest() {
     var vm = this;
-    this.log.info('$authAnonymously...', [username, password])
-
-    return vm.auth.$authAnonymously()
-      .then(function (authData) {
-        vm.AuthService.authData = authData;
-        vm.log.info('authData...', vm.AuthService.authData);
+    this.AuthService.loginAsGuest()
+      .then(function () {
+        vm.$state.go('presence');
       })
-      .catch(function (error) {
-        vm.error = error;
-      });
   }
 
-  logout(){
-    var vm = this;
-    vm.AuthService.authData = false;
-    vm.auth.$unauth();
-    vm.log.info('logout...')
+  logout() {
+    return this.AuthService.logout();
   }
 
-  facebookLogin(){
-    var vm = this;
-    vm.log.info('login with facebook...');
-    vm.auth.$authWithOAuthPopup('facebook').then(function (authData) {
-      vm.AuthService.authData = authData;
-    })
+  facebookLogin() {
+    return this.AuthService.loginWithFacebook();
   }
 }

@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-sm-12">
       <div class="pull-right">
-        <a ui-sref="login" ng-show="!todo.AuthService.authData">Login</a>
+        <a ui-sref="login" ng-show="!login.AuthService.currentUser">Login</a>
         <a ui-sref="todo">Todo</a>
         <a ui-sref="presence">Presence</a>
       </div>
@@ -20,29 +20,27 @@
           <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" ng-model="login.password">
         </div>-->
 
-        <div ng-if="!login.AuthService.authData" class="text-center">
-          <button class="btn btn-primary btn-lg" type="submit" ng-click="login.login(login.username, login.password)">Login as Guest</button>
+        <div ng-if="!login.AuthService.currentUser" class="text-center">
+          <button class="btn btn-primary btn-lg" type="submit" ng-click="login.loginAsGuest()">Login as Guest</button>
           <button class="btn btn-primary btn-lg" ng-click="login.facebookLogin()">Login With Facebook</button>
         </div>
-        <div ng-if="login.AuthService.authData">
+        <div ng-if="login.AuthService.currentUser">
           <button class="btn btn-danger btn-lg" ng-click="login.logout()">Logout</button>
         </div>
       </form>
 
-      <div ng-if="login.AuthService.authData.provider == 'facebook'">
-        <img ng-src="{{login.AuthService.authData.facebook.profileImageURL}}" alt="">
-        Hello {{login.AuthService.authData.facebook.displayName}}!
-        User ID: {{login.AuthService.authData.uid}}
+      <div ng-if="login.AuthService.currentUser.provider == 'facebook'">
+        <img ng-src="{{login.AuthService.currentUser.facebook.profileImageURL}}" alt="">
+        Hello {{login.AuthService.currentUser.facebook.displayName}}!
+        User ID: {{login.AuthService.currentUser.uid}}
       </div>
 
-      <div ng-if="login.AuthService.authData.provider == 'anonymous'">
+      <div ng-if="login.AuthService.currentUser.provider == 'anonymous'">
         Hello guest!
-        User ID: {{login.AuthService.authData.uid}}
+        <!--User ID: {{login.AuthService.currentUser.uid}}-->
       </div>
 
-      <!--<pre>
-        {{login.authData | json}}
-      </pre>-->
+      <!--<pre>{{login.AuthService.currentUser | json}}</pre>-->
 
     </div>
   </div>

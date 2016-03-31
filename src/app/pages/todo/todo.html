@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-sm-12">
       <div class="pull-right">
-        <a ui-sref="login" ng-show="!todo.AuthService.authData">Login</a>
+        <a ui-sref="login" ng-show="!todo.AuthService.currentUser">Login</a>
         <a ui-sref="todo">Todo</a>
         <a ui-sref="presence">Presence</a>
       </div>
@@ -12,15 +12,15 @@
       <hr>
 
       <div class="text-center">
-        <p ng-if="todo.AuthService.authData.provider == 'facebook'">
-          <img ng-src="{{todo.AuthService.authData.facebook.profileImageURL}}" alt="" width="50px" style="border-radius: 50%;">
-          Hello {{todo.AuthService.authData.facebook.displayName}}!
-          User ID: {{todo.AuthService.authData.uid}}
+        <p ng-if="todo.AuthService.currentUser.provider == 'facebook'">
+          <img ng-src="{{todo.AuthService.currentUser.facebook.profileImageURL}}" alt="" width="50px" style="border-radius: 50%;">
+          Hello {{todo.AuthService.currentUser.facebook.displayName}}!
+          User ID: {{todo.AuthService.currentUser.uid}}
         </p>
 
-        <p ng-if="todo.AuthService.authData.provider == 'anonymous'">
+        <p ng-if="todo.AuthService.currentUser.provider == 'anonymous'">
           Hello guest!
-          User ID: {{todo.AuthService.authData.uid}}
+          User ID: {{todo.AuthService.currentUser.uid}}
         </p>
       </div>
 

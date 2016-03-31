@@ -1,23 +1,24 @@
 export class PresenceController {
-  constructor($log, Firebase, AuthService, $state, $firebaseArray, moment) {
+  constructor(Firebase, FirebaseUrl, AuthService, $state, $firebaseArray, moment) {
     'ngInject';
 
-    if (!AuthService.authData) {
+    if (!AuthService.isAuthenticated()) {
       $state.go('login');
       return;
     }
 
-    var presenceRef = new Firebase("https://torid-fire-1359.firebaseio.com/apps/presence/" + AuthService.authData.uid);
-    var presenceListRef = new Firebase("https://torid-fire-1359.firebaseio.com/apps/presence/");
-    var isOnline = new Firebase("https://torid-fire-1359.firebaseio.com/.info/connected");
+    var presenceRef = new Firebase(FirebaseUrl + "/apps/presence/" + AuthService.getCurrentUser().uid);
+    var presenceListRef = new Firebase(FirebaseUrl + "/apps/presence/");
+    var isOnline = new Firebase(FirebaseUrl + "/.info/connected");
     this.AuthService = AuthService;
 
     this.list = $firebaseArray(presenceListRef);
 
     isOnline.on('value', function(snapshot) {
       if (snapshot.val()) {
-        var isGuest = !!AuthService.authData.facebook;
-        var userName = isGuest ? AuthService.authData.facebook.displayName : 'Guest';
+        var user = AuthService.getCurrentUser();
+        var isGuest = !!user.facebook;
+        var userName = isGuest ? user.facebook.displayName : 'Guest';
 
         if (isGuest) {
           presenceRef.onDisconnect().remove();
