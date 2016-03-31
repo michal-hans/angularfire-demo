@@ -1,7 +1,12 @@
 <section class="container">
   <div class="row">
     <div class="col-sm-12">
-      <a ui-sref="todo" class="pull-right">Todo List</a>
+      <div class="pull-right">
+        <a ui-sref="login" ng-show="!todo.AuthService.authData">Login</a>
+        <a ui-sref="todo">Todo</a>
+        <a ui-sref="presence">Presence</a>
+      </div>
+
 
       <h1>Login</h1>
 

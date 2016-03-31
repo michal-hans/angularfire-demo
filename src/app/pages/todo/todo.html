@@ -1,7 +1,11 @@
 <section class="container">
   <div class="row">
     <div class="col-sm-12">
-      <a ui-sref="login" class="pull-right">Login</a>
+      <div class="pull-right">
+        <a ui-sref="login" ng-show="!todo.AuthService.authData">Login</a>
+        <a ui-sref="todo">Todo</a>
+        <a ui-sref="presence">Presence</a>
+      </div>
 
       <h1>AngularFire <small>Example</small></h1>
 

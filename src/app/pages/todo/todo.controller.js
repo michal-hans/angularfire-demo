@@ -2,10 +2,10 @@ export class TodoController {
   constructor(Firebase, $firebaseArray, AuthService) {
     'ngInject';
 
-    var ref = new Firebase("https://torid-fire-1359.firebaseio.com/apps/todo");
+    var todoRef = new Firebase("https://torid-fire-1359.firebaseio.com/apps/todo");
 
     // download the data into a local object
-    this.list = $firebaseArray(ref);
+    this.list = $firebaseArray(todoRef);
     this.AuthService = AuthService;
   }
 

@@ -12,6 +12,12 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       templateUrl: 'app/pages/login/login.html',
       controller: 'LoginController',
       controllerAs: 'login'
+    })
+    .state('presence', {
+      url: '/presence',
+      templateUrl: 'app/pages/presence/presence.html',
+      controller: 'PresenceController',
+      controllerAs: 'vm'
     });
 
   $urlRouterProvider.otherwise('/');

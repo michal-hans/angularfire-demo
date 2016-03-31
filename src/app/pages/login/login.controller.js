@@ -2,8 +2,8 @@ export class LoginController {
   constructor($log, Firebase, $firebaseAuth, AuthService) {
     'ngInject';
 
-    var ref = new Firebase("https://torid-fire-1359.firebaseio.com/apps/todo");
-    this.auth = $firebaseAuth(ref);
+    var authRef = new Firebase("https://torid-fire-1359.firebaseio.com/");
+    this.auth = $firebaseAuth(authRef);
     this.AuthService = AuthService;
     this.log = $log;
   }
