@@ -1,0 +1,41 @@
+<section class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="pull-right">
+        <a ui-sref="login" ng-show="!todo.AuthService.authData">Login</a>
+        <a ui-sref="todo">Todo</a>
+        <a ui-sref="presence">Presence</a>
+      </div>
+
+      <h1>AngularFire <small>Presence Example</small></h1>
+
+      <hr>
+
+      <div class="text-center">
+        <p ng-if="vm.AuthService.authData.provider == 'facebook'">
+          <img ng-src="{{vm.AuthService.authData.facebook.profileImageURL}}" alt="" width="50px" style="border-radius: 50%;">
+          Hello {{vm.AuthService.authData.facebook.displayName}}!
+          User ID: {{vm.AuthService.authData.uid}}
+        </p>
+
+        <p ng-if="vm.AuthService.authData.provider == 'anonymous'">
+          Hello guest!
+          User ID: {{vm.AuthService.authData.uid}}
+        </p>
+      </div>
+
+      <ul class="Presence-list list-group">
+        <li class="Presence-listItem list-group-item" ng-repeat="listItem in vm.list">
+          <div>{{listItem.name}}</div>
+          <small>Last change: {{listItem.date}}</small>
+          <div class="pull-right">
+            <button class="btn btn-xs"
+                    ng-class="{'btn-danger': listItem.status == 'offline', 'btn-success': listItem.status == 'online'}">{{listItem.status}}</button>
+          </div>
+
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</section>
